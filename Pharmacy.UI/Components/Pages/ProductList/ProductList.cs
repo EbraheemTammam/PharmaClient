@@ -9,7 +9,7 @@ namespace Pharmacy.UI.Components;
 public class ProductListBase : ComponentBase
 {
     [Inject]
-    private IServiceManager? _manager {get; set;}
+    private IRepositoryManager? _manager {get; set;}
 
     public IEnumerable<Product>? Products {get; set;}
 
