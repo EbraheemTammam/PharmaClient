@@ -4,7 +4,7 @@ namespace Pharmacy.Domain.Interfaces;
 
 
 
-public interface ICustomerService : IService<Customer>
+public interface ICustomerRepository : IRepository<Customer>
 {
     Task<HttpResponseMessage> GetPayments(Guid customerId);
     Task<HttpResponseMessage> AddPayment(Guid customerId, PaymentCreate paymentCreate);

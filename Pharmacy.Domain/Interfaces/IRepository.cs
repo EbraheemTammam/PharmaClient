@@ -1,7 +1,7 @@
 namespace Pharmacy.Domain.Interfaces;
 
 
-public interface IService<TModel>
+public interface IRepository<TModel>
 {
     Task<IEnumerable<TModel>> GetAll();
     Task<TModel> GetById<TId>(TId id);
