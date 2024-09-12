@@ -2,7 +2,7 @@ using System.Net.Http.Json;
 using Pharmacy.Domain.Interfaces;
 using Pharmacy.Domain.Models;
 
-namespace Pharmacy.Application.Repositories;
+namespace Pharmacy.Infrastructure.Repositories;
 
 
 

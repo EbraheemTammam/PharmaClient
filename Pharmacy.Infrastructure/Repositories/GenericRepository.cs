@@ -1,7 +1,7 @@
 using Pharmacy.Domain.Interfaces;
 using System.Net.Http.Json;
 
-namespace Pharmacy.Application.Repositories;
+namespace Pharmacy.Infrastructure.Repositories;
 
 
 public class GenericRepository<TModel> : IRepository<TModel>

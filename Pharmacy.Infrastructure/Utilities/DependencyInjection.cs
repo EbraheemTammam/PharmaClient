@@ -1,9 +1,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using Pharmacy.Domain.Interfaces;
-using Pharmacy.Application.Repositories;
+using Pharmacy.Infrastructure.Repositories;
 using Pharmacy.Domain.Models;
 
-namespace Pharmacy.Application.Utilities;
+namespace Pharmacy.Infrastructure.Utilities;
 
 
 

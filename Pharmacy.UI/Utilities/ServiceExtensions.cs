@@ -1,8 +1,8 @@
 using MudBlazor.Services;
 using Pharmacy.Domain.Models;
 using Pharmacy.Domain.Interfaces;
-using Pharmacy.Application.Utilities;
-using Pharmacy.Application.Services;
+using Pharmacy.Infrastructure.Utilities;
+using Pharmacy.Infrastructure.Repositories;
 
 namespace Pharmacy.UI.Utilities;
 
