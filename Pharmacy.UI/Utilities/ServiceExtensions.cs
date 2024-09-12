@@ -8,12 +8,16 @@ namespace Pharmacy.UI.Utilities;
 
 
 
-public static class ServiceExtensions
+public static class ServiceExtensionscd
 {
     public static IServiceCollection Configure(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddRazorComponents()
                 .AddInteractiveServerComponents();
+        services.AddRazorComponents()
+                .AddInteractiveWebAssemblyComponents();
+        services.AddMudEventManager();
+        services.AddMudBlazorJsEvent();
         services.AddMudServices();
         services.AddServices();
         services.AddClient(configuration);

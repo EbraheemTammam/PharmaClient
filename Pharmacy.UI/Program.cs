@@ -1,5 +1,5 @@
-using Pharmacy.UI.Utilities;
 using Pharmacy.UI.Components;
+using Pharmacy.UI.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +22,7 @@ app.UseStaticFiles();
 app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
-    .AddInteractiveServerRenderMode();
+    .AddInteractiveServerRenderMode()
+    .AddInteractiveWebAssemblyRenderMode();
 
 app.Run();
