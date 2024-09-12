@@ -19,7 +19,7 @@ public static class ServiceExtensionscd
         services.AddMudEventManager();
         services.AddMudBlazorJsEvent();
         services.AddMudServices();
-        services.AddServices();
+        services.AddRepositories();
         services.AddClient(configuration);
         return services;
     }
@@ -27,13 +27,13 @@ public static class ServiceExtensionscd
     public static IServiceCollection AddClient(this IServiceCollection services, IConfiguration configuration)
     {
         Uri BaseAddress = new(configuration.GetSection("BaseAddress").Value!);
-        services.AddHttpClient<IService<User>, UserService>(client => client.BaseAddress = BaseAddress);
-        services.AddHttpClient<IService<Product>, ProductService>(client => client.BaseAddress = BaseAddress);
-        services.AddHttpClient<IService<ProductProvider>, GenericService<ProductProvider>>(client => client.BaseAddress = BaseAddress);
-        services.AddHttpClient<IService<ScarceProduct>, GenericService<ScarceProduct>>(client => client.BaseAddress = BaseAddress);
-        services.AddHttpClient<IService<IncomingOrder>, GenericService<IncomingOrder>>(client => client.BaseAddress = BaseAddress);
-        services.AddHttpClient<IService<Customer>, GenericService<Customer>>(client => client.BaseAddress = BaseAddress);
-        services.AddHttpClient<IService<Order>, GenericService<Order>>(client => client.BaseAddress = BaseAddress);
+        services.AddHttpClient<IRepository<User>, UserRepository>(client => client.BaseAddress = BaseAddress);
+        services.AddHttpClient<IRepository<Product>, ProductRepository>(client => client.BaseAddress = BaseAddress);
+        services.AddHttpClient<IRepository<ProductProvider>, GenericRepository<ProductProvider>>(client => client.BaseAddress = BaseAddress);
+        services.AddHttpClient<IRepository<ScarceProduct>, GenericRepository<ScarceProduct>>(client => client.BaseAddress = BaseAddress);
+        services.AddHttpClient<IRepository<IncomingOrder>, GenericRepository<IncomingOrder>>(client => client.BaseAddress = BaseAddress);
+        services.AddHttpClient<IRepository<Customer>, GenericRepository<Customer>>(client => client.BaseAddress = BaseAddress);
+        services.AddHttpClient<IRepository<Order>, GenericRepository<Order>>(client => client.BaseAddress = BaseAddress);
         return services;
     }
 }

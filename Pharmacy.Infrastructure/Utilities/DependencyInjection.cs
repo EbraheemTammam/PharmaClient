@@ -14,7 +14,7 @@ public static class DependencyInjection
     /// </summary>
     /// <param name="services">IRepositoryCollection</param>
     /// <returns>A reference to this instance after injecting Repositorys</returns>
-    public static IServiceCollection AddRepositorys(this IServiceCollection services)
+    public static IServiceCollection AddRepositories(this IServiceCollection services)
     {
         services.AddScoped<IRepositoryManager, RepositoryManager>();
         services.AddScoped<IRepository<Product>, ProductRepository>();
