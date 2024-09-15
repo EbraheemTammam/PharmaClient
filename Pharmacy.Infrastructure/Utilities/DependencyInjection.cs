@@ -1,7 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Pharmacy.Domain.Interfaces;
 using Pharmacy.Infrastructure.Repositories;
-using Pharmacy.Domain.Models;
 
 namespace Pharmacy.Infrastructure.Utilities;
 
@@ -17,7 +16,7 @@ public static class DependencyInjection
     public static IServiceCollection AddRepositories(this IServiceCollection services)
     {
         services.AddScoped<IRepositoryManager, RepositoryManager>();
-        services.AddScoped<IRepository<Product>, ProductRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();
         return services;
     }

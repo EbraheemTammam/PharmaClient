@@ -11,9 +11,10 @@ public class RepositoryManager : IRepositoryManager
     private readonly IServiceProvider _serviceProvider;
     public RepositoryManager(IServiceProvider serviceProvider) =>
         _serviceProvider = serviceProvider;
+
     public IRepository<User> Users => _serviceProvider.GetRequiredService<IRepository<User>>();
 
-    public IRepository<Product> Products => _serviceProvider.GetRequiredService<IRepository<Product>>();
+    public IProductRepository Products => _serviceProvider.GetRequiredService<IProductRepository>();
 
     public IRepository<ProductProvider> ProductProviders => _serviceProvider.GetRequiredService<IRepository<ProductProvider>>();
 

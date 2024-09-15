@@ -28,7 +28,7 @@ public static class ServiceExtensionscd
     {
         Uri BaseAddress = new(configuration.GetSection("BaseAddress").Value!);
         services.AddHttpClient<IRepository<User>, UserRepository>(client => client.BaseAddress = BaseAddress);
-        services.AddHttpClient<IRepository<Product>, ProductRepository>(client => client.BaseAddress = BaseAddress);
+        services.AddHttpClient<IProductRepository, ProductRepository>(client => client.BaseAddress = BaseAddress);
         services.AddHttpClient<IRepository<ProductProvider>, GenericRepository<ProductProvider>>(client => client.BaseAddress = BaseAddress);
         services.AddHttpClient<IRepository<ScarceProduct>, GenericRepository<ScarceProduct>>(client => client.BaseAddress = BaseAddress);
         services.AddHttpClient<IRepository<IncomingOrder>, GenericRepository<IncomingOrder>>(client => client.BaseAddress = BaseAddress);
