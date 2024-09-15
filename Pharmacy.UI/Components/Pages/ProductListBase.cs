@@ -3,7 +3,7 @@ using MudBlazor;
 using Pharmacy.Domain.Interfaces;
 using Pharmacy.Domain.Mappers;
 using Pharmacy.Domain.Models;
-using Pharmacy.UI.Components.Reusable;
+using Pharmacy.UI.Components.Dialogs;
 
 namespace Pharmacy.UI.Components;
 
@@ -37,7 +37,7 @@ public class ProductListBase : ComponentBase
             { "OnProductCreated", new EventCallbackFactory().Create<Product>(this, _onProductCreated) }
         };
         var options = new DialogOptions {CloseOnEscapeKey = true};
-        await DialogService!.ShowAsync<ProductCreateComponent>("Create Product", parameters, options);
+        await DialogService!.ShowAsync<ProductCreateDialog>("Create Product", parameters, options);
     }
 
     protected void BackupProduct(object product) =>

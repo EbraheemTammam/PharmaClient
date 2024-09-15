@@ -4,10 +4,10 @@ using Pharmacy.Domain.Interfaces;
 using Pharmacy.Domain.Models;
 using MudBlazor;
 
-namespace Pharmacy.UI.Components.Reusable;
+namespace Pharmacy.UI.Components.Dialogs;
 
 
-public class ProductCreateComponentBase : ComponentBase
+public class ProductCreateDialogBase : ComponentBase
 {
     [CascadingParameter]
     private MudDialogInstance? MudDialog { get; set; }
