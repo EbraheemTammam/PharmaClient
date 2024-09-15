@@ -13,18 +13,21 @@
 <MudRTLProvider />
 <MudLayout>
     <MudAppBar Elevation="1">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer" />
-        <MudSpacer />
-        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Href="https://github.com/MudBlazor/MudBlazor" Target="_blank" />
+        <MudIcon Icon="@Icons.Material.Filled.LocalPharmacy" Class="mr-3"></MudIcon>
+        <MudText Style="color: white;" Typo="Typo.h5">Pharma</MudText>
     </MudAppBar>
     <MudDrawer
         @bind-Open="@_open"
         ClipMode="DrawerClipMode.Always"
         Elevation="1"
         Variant="@DrawerVariant.Mini"
-        Style="background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);"
+        Style="@(_open ? "width: 15rem;" : "width: 5rem;")"
+        @onmouseover="@OpenDrawer"
+        @onmouseout="@CloseDrawer"
     >
-        <NavMenu @bind-Open="_open"/>
+        <div style="width: 100%; height: 100%; background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);">
+            <NavMenu @bind-Open="_open"/>
+        </div>
     </MudDrawer>
     <MudMainContent Class="pt-16 px-0">
         <MudContainer Class="mt-6">
@@ -36,8 +39,7 @@
 @code{
     private bool _open = false;
 
-    private void ToggleDrawer()
-    {
-        _open = !_open;
-    }
+    private void OpenDrawer() => _open = true;
+
+    private void CloseDrawer() => _open = false;
 }
