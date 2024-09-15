@@ -1,0 +1,53 @@
+@page "/expiring_soon"
+@inherits ExpiringSoonBase
+@using Pharmacy.Domain.Models
+
+<PageTitle>Expiring Soon</PageTitle>
+
+
+@if(Products is null)
+{
+    <MudContainer Class="d-flex align-center justify-center" style="height:80vh;">
+        <MudProgressCircular Indeterminate="true" Color="Color.Info" Size="Size.Large" />
+    </MudContainer>
+}
+else
+{
+    @* List of Products *@
+    <MudTable
+        Items="@Products"
+        Hover="true"
+        Breakpoint="Breakpoint.Sm"
+        Dense="true"
+        RowsPerPage="10"
+        Filter="FilterFunc"
+        SortLabel="Sort By"
+        ReadOnly="true"
+    >
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Expiring Soon</MudText>
+            <MudSpacer />
+            <MudTextField
+                @bind-Value="searchString"
+                Placeholder="Search by name"
+                Adornment="Adornment.Start"
+                AdornmentIcon="@Icons.Material.Filled.Search"
+                IconSize="Size.Medium"
+                Class="mt-0"
+            ></MudTextField>
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh>Product Name</MudTh>
+            <MudTh>Expiration Date</MudTh>
+            <MudTh>Number Of Boxes</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Product Name">@context.ProductName</MudTd>
+            <MudTd DataLabel="Expiration Date">@context.ExpirationDate</MudTd>
+            <MudTd DataLabel="Number Of Boxes">@context.NumberOfBoxes</MudTd>
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+}
