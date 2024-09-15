@@ -1,7 +1,16 @@
 ﻿@rendermode InteractiveServer
 
 
-
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider
+    FullWidth="true"
+    Position="DialogPosition.Center"
+    CloseOnEscapeKey="true"
+/>
+<MudSnackbarProvider />
+<MudBreakpointProvider />
+<MudRTLProvider />
 <MudLayout>
     <MudAppBar Elevation="1">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@ToggleDrawer" />
@@ -17,7 +26,7 @@
     >
         <NavMenu @bind-Open="_open"/>
     </MudDrawer>
-    <MudMainContent Class="pt-16 px-16">
+    <MudMainContent Class="pt-16 px-0">
         <MudContainer Class="mt-6">
             <Routes />
         </MudContainer>
