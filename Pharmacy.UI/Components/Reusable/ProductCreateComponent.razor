@@ -1,0 +1,62 @@
+@inherits ProductCreateComponentBase
+@inject ISnackbar Snackbar
+@using System.ComponentModel.DataAnnotations
+
+
+<MudDialog>
+    <DialogContent>
+        <EditForm Model="@productCreate" OnValidSubmit="@((context) => {Snackbar.Add("Product created"); OnValidSubmit(context);})">
+            <DataAnnotationsValidator/>
+            <MudCard style="box-shadow: none; border: 0px;">
+                <MudCardContent>
+                    <MudTextField
+                        Label="Name"
+                        @bind-Value="productCreate.Name"
+                        For="@(() => productCreate.Name)"
+                    />
+                    <MudTextField
+                        Label="Barcode" Class="mt-3"
+                        @bind-Value="productCreate.Barcode"
+                        For="@(() => productCreate.Barcode)"
+                    />
+                    <MudNumericField
+                        Label="Number Of Elements" Class="mt-3"
+                        @bind-Value="productCreate.NumberOfElements"
+                        For="@(() => productCreate.NumberOfElements)"
+                    />
+                    <MudNumericField
+                        Label="Price Per Element" Class="mt-3"
+                        @bind-Value="productCreate.PricePerElement"
+                        For="@(() => productCreate.PricePerElement)"
+                    />
+                    <MudNumericField
+                        Label="Minimum" Class="mt-3"
+                        @bind-Value="productCreate.Minimum"
+                        For="@(() => productCreate.Minimum)"
+                    />
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton
+                        StartIcon="@Icons.Material.Filled.Cancel"
+                        ButtonType="ButtonType.Button"
+                        Variant="Variant.Filled"
+                        Color="Color.Secondary"
+                        OnClick="CancelDialog"
+                        Class="ml-auto"
+                    >
+                        Cancel
+                    </MudButton>
+                    <MudButton
+                        StartIcon="@Icons.Material.Filled.Save"
+                        ButtonType="ButtonType.Submit"
+                        Variant="Variant.Filled"
+                        Color="Color.Success"
+                        Class="ml-3"
+                    >
+                        Create
+                    </MudButton>
+                </MudCardActions>
+            </MudCard>
+        </EditForm>
+    </DialogContent>
+</MudDialog>
