@@ -9,20 +9,17 @@ namespace Pharmacy.Domain.Models;
 
 public abstract class ProductBase
 {
-    [AllowNull, MaxLength(15)]
+    [AllowNull, MinLength(10), MaxLength(15)]
     public string? Barcode {get; set;}
 
     [Required, MinLength(3), MaxLength(100)]
-    public required string Name {get; set;}
+    public string? Name {get; set;}
 
     [NonNegative, DefaultValue(1)]
     public int? NumberOfElements {get; set;}
 
     [Required, NonNegative]
     public double PricePerElement {get; set;}
-
-    [AllowNull, DefaultValue(false)]
-    public bool? IsLack {get; set;}
 
     [Required, NonNegative, DefaultValue(0)]
     public int Minimum {get; set;}
