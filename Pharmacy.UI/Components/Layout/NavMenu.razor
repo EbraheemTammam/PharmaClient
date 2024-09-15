@@ -1,28 +1,7 @@
 ﻿<nav class="flex-column @(Open ? "" : "closed")">
     <div class="nav-item px-3">
-        <NavLink class="nav-link" style="@(Open ? "" : "padding: 0rem;")" href="" Match="NavLinkMatch.All">
-            <span class="bi bi-house-door-fill-nav-menu @(Open ? "" : "closed")" aria-hidden="true"></span>
-            <span class="nav-text @(Open ? "" : "hidden")">Home</span>
-        </NavLink>
-    </div>
-
-    <div class="nav-item px-3">
-        <NavLink class="nav-link" style="@(Open ? "" : "padding: 0rem;")" href="counter">
-            <span class="bi bi-plus-square-fill-nav-menu @(Open ? "" : "closed")" aria-hidden="true"></span>
-            <span class="nav-text @(Open ? "" : "hidden")">Counter</span>
-        </NavLink>
-    </div>
-
-    <div class="nav-item px-3">
-        <NavLink class="nav-link" style="@(Open ? "" : "padding: 0rem;")" href="weather">
-            <span class="bi bi-list-nested-nav-menu @(Open ? "" : "closed")" aria-hidden="true"></span>
-            <span class="nav-text @(Open ? "" : "hidden")">Weather</span>
-        </NavLink>
-    </div>
-
-    <div class="nav-item px-3">
         <NavLink class="nav-link" style="@(Open ? "" : "padding: 0rem;")" href="products">
-            <span class="bi bi-list-nested-nav-menu @(Open ? "" : "closed")" aria-hidden="true"></span>
+            <MudIcon Icon="@Icons.Material.Filled.Inventory" Style="@(Open ? "margin-right: 0.75rem;" : "margin-left: 0.25rem; margin-right: 0rem;")" />
             <span class="nav-text @(Open ? "" : "hidden")">Products</span>
         </NavLink>
     </div>
