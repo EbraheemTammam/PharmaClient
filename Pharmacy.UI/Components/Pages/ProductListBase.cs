@@ -5,7 +5,7 @@ using Pharmacy.Domain.Mappers;
 using Pharmacy.Domain.Models;
 using Pharmacy.UI.Components.Dialogs;
 
-namespace Pharmacy.UI.Components;
+namespace Pharmacy.UI.Components.Pages;
 
 
 
