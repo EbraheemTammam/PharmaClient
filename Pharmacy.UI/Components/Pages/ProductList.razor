@@ -1,0 +1,96 @@
+@page "/products"
+@inherits ProductListBase
+@inject ISnackbar Snackbar
+@using Pharmacy.Domain.Models
+@rendermode InteractiveServer
+
+<PageTitle>Products</PageTitle>
+
+
+@if(Products is null)
+{
+    <MudContainer Class="d-flex align-center justify-center" style="height:80vh;">
+        <MudProgressCircular Indeterminate="true" Color="Color.Info" Size="Size.Large" />
+    </MudContainer>
+}
+else
+{
+    @* List of Products *@
+    <MudTable
+        Items="@Products"
+        Hover="true"
+        Breakpoint="Breakpoint.Sm"
+        Dense="true"
+        RowsPerPage="10"
+        Filter="FilterFunc"
+        SortLabel="Sort By"
+        CommitEditTooltip="Commit Edit"
+        OnCommitEditClick="@(() => Snackbar.Add("Product saved"))"
+        RowEditPreview="BackupProduct"
+        RowEditCancel="ResetProduct"
+        RowEditCommit="@(async (product) => await UpdateProduct(product))"
+        IsEditRowSwitchingBlocked="false"
+        ApplyButtonPosition="@TableApplyButtonPosition.End"
+        EditButtonPosition="@TableEditButtonPosition.End"
+        EditTrigger="@TableEditTrigger.RowClick"
+    >
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Products</MudText>
+            <MudIconButton
+                Variant="Variant.Outlined"
+                Icon="@Icons.Material.Filled.AddCircleOutline"
+                Color="Color.Success"
+                OnClick="OpenCreateDialog"
+                Class="ml-3"
+            ></MudIconButton>
+            <MudSpacer />
+            <MudTextField
+                @bind-Value="searchString"
+                Placeholder="Search by name or barcode"
+                Adornment="Adornment.Start"
+                AdornmentIcon="@Icons.Material.Filled.Search"
+                IconSize="Size.Medium"
+                Class="mt-0"
+            ></MudTextField>
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh>Name</MudTh>
+            <MudTh>Barcode</MudTh>
+            <MudTh>Elements Per Box</MudTh>
+            <MudTh>Price Per Element</MudTh>
+            <MudTh>Boxes Owned</MudTh>
+            <MudTh>Status</MudTh>
+            <MudTh>Delete</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Name">@context.Name</MudTd>
+            <MudTd DataLabel="Barcode">@context.Barcode</MudTd>
+            <MudTd DataLabel="Number Of Elements">@context.NumberOfElements</MudTd>
+            <MudTd DataLabel="Price Per Element">@context.PricePerElement</MudTd>
+            <MudTd DataLabel="Boxes Owned">@context.BoxesOwned</MudTd>
+            <MudTd DataLabel="Is Lack">@(context.IsLack ? "Lacked" : "Available")</MudTd>
+            <MudTd DataLabel="Actions">
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="@(async () => await DeleteProduct(context))" />
+            </MudTd>
+        </RowTemplate>
+        <RowEditingTemplate>
+            <MudTd DataLabel="Name">
+                <MudTextField @bind-Value="context.Name" Required />
+            </MudTd>
+            <MudTd DataLabel="Barcode">
+                <MudTextField @bind-Value="context.Barcode" />
+            </MudTd>
+            <MudTd DataLabel="Number Of Elements">
+                <MudNumericField @bind-Value="context.NumberOfElements" Required Min="1" />
+            </MudTd>
+            <MudTd DataLabel="Price Per Element">
+                <MudNumericField @bind-Value="context.PricePerElement" Required Min="0" />
+            </MudTd>
+            <MudTd DataLabel="BoxesOwned">@context.BoxesOwned</MudTd>
+            <MudTd DataLabel="Is Lack">@(context.IsLack ? "Lacked" : "Available")</MudTd>
+        </RowEditingTemplate>
+        <PagerContent>
+            <MudTablePager />
+        </PagerContent>
+    </MudTable>
+}
