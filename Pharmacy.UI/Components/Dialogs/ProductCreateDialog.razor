@@ -5,7 +5,12 @@
 
 <MudDialog>
     <DialogContent>
-        <EditForm Model="@productCreate" OnValidSubmit="@((context) => {Snackbar.Add("Product created"); OnValidSubmit(context);})">
+        <EditForm
+            Enhance="true"
+            Model="@productCreate"
+            OnValidSubmit="@((context) => {Snackbar.Add("Product created");
+            OnValidSubmit(context);})"
+        >
             <DataAnnotationsValidator/>
             <MudCard style="box-shadow: none; border: 0px;">
                 <MudCardContent>

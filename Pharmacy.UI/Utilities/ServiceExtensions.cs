@@ -14,8 +14,6 @@ public static class ServiceExtensionscd
     {
         services.AddRazorComponents()
                 .AddInteractiveServerComponents();
-        services.AddRazorComponents()
-                .AddInteractiveWebAssemblyComponents();
         services.AddMudEventManager();
         services.AddMudBlazorJsEvent();
         services.AddMudServices();

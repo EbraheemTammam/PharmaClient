@@ -2,7 +2,6 @@
 @inherits ProductListBase
 @inject ISnackbar Snackbar
 @using Pharmacy.Domain.Models
-@rendermode InteractiveServer
 
 <PageTitle>Products</PageTitle>
 
@@ -17,6 +16,7 @@ else
 {
     @* List of Products *@
     <MudTable
+        @rendermode="InteractiveServer"
         Items="@Products"
         Hover="true"
         Breakpoint="Breakpoint.Sm"
